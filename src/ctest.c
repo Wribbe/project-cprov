@@ -6,6 +6,7 @@
 
 
 #define LEN(array) (sizeof(array) / sizeof(array[0]))
+#define NUM_TESTS(tests) LEN(tests)-1
 
 #define CTEST_ASSERT(res, fmt_msg, ...)               \
   do {                                                \
@@ -22,7 +23,7 @@ struct ctest_state {
 
 
 void
-ctest_run(struct ctest_state * state, const char * test_list[])
+ctest_run(struct ctest_state * state, const char * tests[], uint64_t num_tests)
 {
 }
 
@@ -31,20 +32,20 @@ int
 main(int argc, const char ** argv)
 {
 
-  const char * test_list[] = {
+  const char * tests[] = {
     "fake/test_file.c",
     "test_method_1",
     "test_method_2",
-    "test_method_3",
-    NULL
+    "test_method_3"
   };
 
   struct ctest_state state = {0};
-  ctest_run(&state, test_list);
-  CTEST_ASSERT_EQ(
-    state.num_tests == LEN(test_list)-1,
+  ctest_run(&state, tests, NUM_TESTS(tests));
+
+  CTEST_ASSERT(
+    state.num_tests == NUM_TESTS(tests),
     "%zu tests were run instead of %zu\n",
     state.num_tests,
-    LEN(test_list)-1
+    NUM_TESTS(tests)
   );
 }
