@@ -1,8 +1,10 @@
+FLAGS := -Wall --pedantic
+
 all: bin/ctest
 
 
 bin/ctest : src/ctest.c | bin
-	gcc $^ -o $@
+	gcc $^ -o $@ ${FLAGS}
 
 
 bin:
