@@ -23,8 +23,19 @@ struct ctest_state {
 
 
 void
+ctest_run_test(struct ctest_state * state, const char * path, const char * method)
+{
+  state->num_tests++;
+}
+
+
+void
 ctest_run(struct ctest_state * state, const char * tests[], uint64_t num_tests)
 {
+  const char * path = tests[0];
+  for (uint64_t ii=1; ii<=num_tests; ii++) {
+    ctest_run_test(state, path, tests[ii]);
+  }
 }
 
 
