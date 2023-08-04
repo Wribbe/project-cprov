@@ -8,6 +8,27 @@
 #define LEN(array) (sizeof(array) / sizeof(array[0]))
 #define NUM_TESTS(tests) LEN(tests)-1
 
+
+enum LOG_LEVEL {
+  LOG_FATAL,
+  LOG_ERROR,
+  LOG_WARNING,
+  LOG_INFO,
+  LOG_DEBUG
+};
+
+
+#define debug_level LOG_DEBUG
+
+
+#define LOG(level, ...)         \
+  do {                          \
+    if (level <= debug_level) { \
+      printf(__VA_ARGS__);      \
+    }                           \
+  } while (0)
+
+
 #define CTEST_ASSERT(res, fmt_msg, ...)               \
   do {                                                \
     if (!(res)) {                                     \
