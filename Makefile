@@ -8,7 +8,7 @@ all: ${BIN} ${TEMPS} ${TEST}
 BUILD = gcc ${FLAGS} $^ -o $@
 
 .tmp/% : src/test/% bin/ctest_gen | .tmp
-	bin/ctest_gen $^ > $@
+	bin/ctest_gen $(filter %.c,$^) > $@
 
 bin/.test/% : lib/ctest.h .tmp/%.c | bin/.test
 	${BUILD}
