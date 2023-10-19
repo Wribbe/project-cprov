@@ -7,10 +7,10 @@ all: ${BIN} ${TEMPS} ${TEST}
 
 BUILD = gcc ${FLAGS} $^ -o $@
 
-.tmp/% : src/test/% bin/ctest_gen | .tmp
-	bin/ctest_gen $(filter %.c,$^) > $@
+.tmp/% : src/test/% bin/cprov_gen | .tmp
+	bin/cprov_gen $(filter %.c,$^) > $@
 
-bin/.test/% : lib/ctest.h .tmp/%.c | bin/.test
+bin/.test/% : lib/cprov.h .tmp/%.c | bin/.test
 	${BUILD}
 
 bin/% : src/%.c | bin

@@ -16,6 +16,9 @@ const char * tail = \
 int
 main(int argc, const char ** argv)
 {
+  for (int ii=0; ii<argc; ii++) {
+    fprintf(stderr, "Arg[%d]: %s\n", ii, argv[ii]);
+  }
   printf("%s\n", includes);
   printf("%s", head);
   printf("%s\n", "  printf(\"%s\\n\", \"HELLO WORLD\");");

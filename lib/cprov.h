@@ -8,6 +8,6 @@
     return true;        \
   } while(0);
 
-struct ctest {
+struct cprov {
   void * hello;
 };
