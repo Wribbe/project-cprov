@@ -16,6 +16,12 @@ const char * tail = \
 int
 main(int argc, const char ** argv)
 {
+
+  if (argc < 2) {
+    fprintf(stderr, "Usage: %s PATH_SOURCE_FILE\n", argv[0]);
+    return EXIT_FAILURE;
+  }
+
   for (int ii=0; ii<argc; ii++) {
     fprintf(stderr, "Arg[%d]: %s\n", ii, argv[ii]);
   }
