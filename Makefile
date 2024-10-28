@@ -1,4 +1,4 @@
-FLAGS := -g
+FLAGS := -g -Wall --pedantic
 
 all: bin/cprov
 
